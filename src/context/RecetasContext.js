@@ -1,17 +1,17 @@
-import React, { createContext, useState, useEffect } from 'react';
-import Axios from 'axios';
+import React, { createContext, useState, useEffect } from "react";
+import Axios from "axios";
 
 export const RecetasContext = createContext();
 
 const RecetasProvider = (props) => {
   const [recetas, setRecetas] = useState([]);
   const [busquedaRecetas, setBusquedaRecetas] = useState({
-    nombre: '',
-    categoria: ''
+    nombre: "",
+    categoria: "",
   });
   const [consultar, setConsultar] = useState(false);
 
-  const {nombre, categoria} = busquedaRecetas;
+  const { nombre, categoria } = busquedaRecetas;
 
   useEffect(() => {
     if (!consultar) return;
@@ -20,7 +20,7 @@ const RecetasProvider = (props) => {
       const resultadoRecetas = await Axios(url);
       setRecetas(resultadoRecetas.data.drinks);
       setConsultar(false);
-    }
+    };
     obtenerRecetas();
     // eslint-disable-next-line
   }, [busquedaRecetas]);
@@ -30,12 +30,12 @@ const RecetasProvider = (props) => {
       value={{
         recetas,
         setBusquedaRecetas,
-        setConsultar
+        setConsultar,
       }}
     >
       {props.children}
     </RecetasContext.Provider>
   );
-}
+};
 
 export default RecetasProvider;

@@ -8,7 +8,7 @@ const Formulario = () => {
 
   const [busqueda, setBusqueda] = useState({
     nombre: "",
-    categoria: ""
+    categoria: "",
   });
 
   // Función para leer los contenidos
@@ -19,17 +19,14 @@ const Formulario = () => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setBusquedaRecetas(busqueda);
     setConsultar(true);
-  }
+  };
 
   return (
-    <form 
-      className="col-md-12" 
-      onSubmit={handleSubmit}
-    >
+    <form className="col-md-12" onSubmit={handleSubmit}>
       <fieldset className="text-center">
         <legend>Busca bebidas por categoría o Ingrediente</legend>
       </fieldset>
